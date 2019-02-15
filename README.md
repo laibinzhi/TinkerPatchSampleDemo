@@ -2,6 +2,7 @@
   一句话概括，动态地修复和更新App的行为
 # 热修复有什么好处？
   用户下载了我们的app，如果出现bug或者我们要修改某个功能，我们就要重新编译一个版本让用户覆盖安装才能解决问题，不过这份成本非常高，我们首先要发一个版本，其次用户还得重新安装下载apk，这个过程可能会使用户流失掉，热修复，可以在用户神不知鬼不觉的情况下就完成bug的修复和新功能的实现
+<!--more-->
 # 有了热修复就可以一劳永逸吗？
   目前市面上的所有热修复框架都不支持四大组件的生成和AndroidManifest文件的编写，如果有重大版本更新或者新页面，还是需要走正常发布流程。而bug的修复和一些资源的替换，才可以使用热修复技术。发布正式版本和发布热修复版本同样需要经过测试，因为各种热修复技术都会有兼容性的问题。
 # 接入准备工作
@@ -223,7 +224,7 @@ public class SampleApplication extends Application {
 ### 1.构建基准包
     方法一：在AS Terminal 命令窗口 执行gradlew assemblerelease 命令
     方法二：在AS gradle执行assemblerelease命令行，如下图
-  ![image](http://pd4brty72.bkt.clouddn.com/gradletask.png)
+  ![image](http://lbz-blog.test.upcdn.net/post/gradletask.png)
   
 ### 2.把基准包信息填入tinkerpatch.gradle中
  
@@ -235,7 +236,7 @@ def variantName = "release"
 ### 3.复制保存基准包
  此时此基准包将作为正式服务器版本发布出去。需要保管妥当，将bakApk中对应的版本复制一份保存在本地，以免执行AS中Clean Project任务时删掉。如下图，
  将app-1.0.0-0801-14-13-17整个文件夹复制保存于本地。如果在构建补丁包的时候没有找到的话，就把本地的copy进去。
- ![image](http://pd4brty72.bkt.clouddn.com/savebaseapk.png)
+ ![image](http://lbz-blog.test.upcdn.net/post/savebaseapk.png)
  
 ### 4.构建补丁包
   在线上的APP出现bug或者需要进行资源替换，就要生产补丁包，方法和构建基准包方法一样，有两种：
@@ -244,11 +245,11 @@ def variantName = "release"
   
   方法二：在AS gradle执行tinkerPatchRelease命令行，如下图
   
-  ![image](http://pd4brty72.bkt.clouddn.com/gradletinkertask.png)
+  ![image](http://lbz-blog.test.upcdn.net/post/gradletinkertask.png)
   
   补丁包将位于 build/outputs/tinkerPatch下。如下图
   
- ![image](http://pd4brty72.bkt.clouddn.com/tinkerapkpath.png)
+ ![image](http://lbz-blog.test.upcdn.net/post/tinkerapkpath.png)
 
 ### 4.发布补丁包
 ####   1.注册登陆 http://www.tinkerpatch.com
@@ -261,10 +262,3 @@ def variantName = "release"
 
 # 参考代码
 https://github.com/laibinzhi/TinkerPatchSampleDemo
-
-
-
-
-
-
-
